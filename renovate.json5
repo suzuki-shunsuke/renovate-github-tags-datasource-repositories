@@ -4,8 +4,9 @@
     {
       fileMatch: ["main.tf"],
       matchStrings: [
-        '"(?<currentValue>.*?)" # renovate: depName=(?<depName>.*?)',
+        '"(?<currentValue>.*?)" # renovate: depName=suzuki-shunsuke/aws-rds--aurora-postgresql',
       ],
+      depNameTemplate: "suzuki-shunsuke/aws-rds--aurora-postgresql",
       datasourceTemplate: "github-tags",
     },
   ],
