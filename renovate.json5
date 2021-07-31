@@ -6,7 +6,7 @@
       matchStrings: [
         '"(?<currentValue>.*?)" # renovate: depName=(?<depName>.*?)',
       ],
-      datasourceTemplate: "github-releases",
+      datasourceTemplate: "github-tags",
     },
   ],
 }
