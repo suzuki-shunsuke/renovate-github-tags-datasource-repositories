@@ -11,6 +11,18 @@ So we create GitHub repositories as `github-tags` Datasources to update them by 
 
 In those repositories, Git tags are synchronized with package's version periodically. 
 
+## Project components
+
+There are three components
+
+* This repository: Document and Example
+* Datasource Repositories
+  * [AWS RDS aurora-postgresql](https://github.com/suzuki-shunsuke/aws-rds-aurora-postgresql)
+  * [AWS Elasticache for Memcached](https://github.com/suzuki-shunsuke/aws-elasticache-memcached)
+  * [AWS Elasticache for Redis](https://github.com/suzuki-shunsuke/aws-elasticache-redis)
+* GitHub Actions: Synchronize Git tags with package's version
+  * [github-actions-aws-rds-available-engine-versions](https://github.com/suzuki-shunsuke/github-actions-aws-rds-available-engine-versions)
+
 ## Datasource repositories
 
 * [AWS RDS](docs/aws-rds.md)
