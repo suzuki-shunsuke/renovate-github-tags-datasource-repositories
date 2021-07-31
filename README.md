@@ -53,6 +53,16 @@ resource "aws_rds_cluster" "aurora-postgresql" {
 
 In their repositories, GitHub Actions is run daily and available AWS RDS engine versions are gotten by [aws rds describe-db-engine-versions](https://awscli.amazonaws.com/v2/documentation/api/latest/reference/rds/describe-db-engine-versions.html) and Git tags are pushed to the repositories.
 
+## Self host Datasource repositories
+
+If you want to manage Datasource repositories by yourself, please clone datasource repositories and configure the following secrets.
+
+* AWS_ACCESS_KEY_ID
+* AWS_SECRET_ACCESS_KEY
+
+To get available RDS engine versions by AWS CLI, AWS Access key is required.
+But the required permission is only `rds:DescribeDBEngineVersions`, so the risk is very low.
+
 ## LICENSE
 
 [MIT](LICENSE)
