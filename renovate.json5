@@ -8,6 +8,7 @@
       ],
       depNameTemplate: "suzuki-shunsuke/aws-rds--aurora-postgresql",
       datasourceTemplate: "github-tags",
+      versioningTemplate: "docker",
     },
   ],
 }
