@@ -1,67 +1,24 @@
-# poc-renovate-aws-rds
+# renovate-github-tags-datasource-repositories
 
-POC to update [AWS RDS](https://docs.aws.amazon.com/en_us/AmazonRDS/latest/UserGuide/Welcome.html) engine version with [Renovate](https://github.com/renovatebot/renovate).
+[Renovate](https://github.com/renovatebot/renovate) `github-tags` Datasource Repositories.
 
 ## Overview
 
-There is no Renovate [Managers](https://docs.renovatebot.com/modules/manager/) and [Datasources](https://docs.renovatebot.com/modules/datasource/) for AWS RDS engine version.
-So we create GitHub repositories as `github-tags` Datasources to update RDS engine version by [Regex Managers](https://docs.renovatebot.com/modules/manager/regex/).
+There are packages which it is difficult to update them by Renovate.
+For example, there is no Renovate [Managers](https://docs.renovatebot.com/modules/manager/) and [Datasources](https://docs.renovatebot.com/modules/datasource/) for AWS RDS and Elasticache engine version.
 
-In their repositories, Git tags are synchronized with RDS engine version periodically. 
+So we create GitHub repositories as `github-tags` Datasources to update them by [Regex Managers](https://docs.renovatebot.com/modules/manager/regex/).
+
+In those repositories, Git tags are synchronized with package's version periodically. 
 
 ## Datasource repositories
 
-There are Datasource repositories per RDS engine.
+* [AWS RDS](docs/aws-rds.md)
 
-* `aurora-postgresql`: https://github.com/suzuki-shunsuke/aws-rds-aurora-postgresql
+## How Git tags are synchronized with package's version periodically?
 
-## Example
-
-* [Update dependency suzuki-shunsuke/aws-rds-aurora-postgresql to v12](https://github.com/suzuki-shunsuke/poc-renovate-aws-rds/pull/4)
-* [Update dependency suzuki-shunsuke/aws-rds-aurora-postgresql to v11.11](https://github.com/suzuki-shunsuke/poc-renovate-aws-rds/pull/3)
-
-[main.tf](https://github.com/suzuki-shunsuke/poc-renovate-aws-rds/blob/main/main.tf)
-
-```tf
-# https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/rds_cluster
-resource "aws_rds_cluster" "aurora-postgresql" {
-  engine         = "aurora-postgresql"
-  engine_version = "11.9" # renovate: depName=suzuki-shunsuke/aws-rds-aurora-postgresql
-  # ...
-}
-```
-
-[renovate.json5](https://github.com/suzuki-shunsuke/poc-renovate-aws-rds/blob/main/renovate.json5)
-
-```json5
-{
-  extends: ["config:base"],
-  regexManagers: [
-    {
-      fileMatch: ["\\.tf$"],
-      matchStrings: [
-        '"(?<currentValue>.*?)" # renovate: depName=(?<depName>.*?)\\n',
-      ],
-      datasourceTemplate: "github-tags",
-      versioningTemplate: "docker", // RDS engine version is invalid semver
-    },
-  ],
-}
-```
-
-## How Git tags are synchronized with RDS engine version periodically?
-
-In their repositories, GitHub Actions is run daily and available AWS RDS engine versions are gotten by [aws rds describe-db-engine-versions](https://awscli.amazonaws.com/v2/documentation/api/latest/reference/rds/describe-db-engine-versions.html) and Git tags are pushed to the repositories.
-
-## Self host Datasource repositories
-
-If you want to manage Datasource repositories by yourself, please clone datasource repositories and configure the following secrets.
-
-* AWS_ACCESS_KEY_ID
-* AWS_SECRET_ACCESS_KEY
-
-To get available RDS engine versions by AWS CLI, AWS Access key is required.
-But the required permission is only `rds:DescribeDBEngineVersions`, so the risk is very low.
+In those repositories, GitHub Actions is run daily and available package's versions are gotten and Git tags are pushed to the repositories.
+For example, AWS RDS engine versions are gotten by [aws rds describe-db-engine-versions](https://awscli.amazonaws.com/v2/documentation/api/latest/reference/rds/describe-db-engine-versions.html).
 
 ## LICENSE
 
