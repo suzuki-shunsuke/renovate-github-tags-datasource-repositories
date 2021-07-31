@@ -21,7 +21,7 @@ There are three components
   * [AWS Elasticache for Memcached](https://github.com/suzuki-shunsuke/aws-elasticache-memcached)
   * [AWS Elasticache for Redis](https://github.com/suzuki-shunsuke/aws-elasticache-redis)
 * GitHub Actions: Synchronize Git tags with package's version
-  * [github-actions-aws-rds-available-engine-versions](https://github.com/suzuki-shunsuke/github-actions-aws-rds-available-engine-versions)
+  * [github-actions-renovate-github-tags-data-source](https://github.com/suzuki-shunsuke/github-actions-renovate-github-tags-data-source)
 
 ## Datasource repositories
 
