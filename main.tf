@@ -9,3 +9,8 @@ resource "aws_elasticache_cluster" "memcached" {
   engine         = "memcached"
   engine_version = "1.4.5" # renovate: depName=suzuki-shunsuke/aws-elasticache-memcached
 }
+
+resource "aws_elasticache_cluster" "redis" {
+  engine         = "redis"
+  engine_version = "5.0.0" # renovate: depName=suzuki-shunsuke/aws-elasticache-redis
+}

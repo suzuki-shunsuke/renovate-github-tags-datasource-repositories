@@ -14,6 +14,7 @@ In those repositories, Git tags are synchronized with package's version periodic
 ## Datasource repositories
 
 * [AWS RDS](docs/aws-rds.md)
+* [AWS Elasticache](docs/aws-elasticache.md)
 
 ## How Git tags are synchronized with package's version periodically?
 
