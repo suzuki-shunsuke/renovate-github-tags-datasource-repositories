@@ -2,13 +2,12 @@
   extends: ["config:base"],
   regexManagers: [
     {
-      fileMatch: ["main.tf"],
+      fileMatch: ["\\.tf$"],
       matchStrings: [
-        '"(?<currentValue>.*?)" # renovate: depName=suzuki-shunsuke/aws-rds--aurora-postgresql',
+        '"(?<currentValue>.*?)" # renovate: depName=(?<depName>.*?)',
       ],
-      depNameTemplate: "suzuki-shunsuke/aws-rds--aurora-postgresql",
       datasourceTemplate: "github-tags",
-      versioningTemplate: "docker",
+      versioningTemplate: "docker", // RDS engine version is invalid semver
     },
   ],
 }
