@@ -2,6 +2,14 @@
 
 [Renovate](https://github.com/renovatebot/renovate) `github-tags` Datasource Repositories.
 
+## Goal of this Project
+
+Update the following packages by Renovate.
+
+* AWS RDS Engine version
+* AWS Elasticache Engine version
+* etc
+
 ## Overview
 
 There are packages which it is difficult to update them by Renovate.
